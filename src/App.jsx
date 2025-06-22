@@ -1,5 +1,5 @@
 import React from "react";
-import Portfoli from "./portfoli";
+import Portfoli from "./Portfoli";
 
 
 function App() {
