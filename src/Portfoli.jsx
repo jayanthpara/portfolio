@@ -240,7 +240,7 @@ const meRef = useRef(null);
             </div>
 <div className="mt-6 mb-10 flex justify-center lg:justify-start">
   <a
-    href="https://drive.google.com/file/d/1q3DfjEPPbyodRcmu3Hl-VWoO3tGzSdf7/view?usp=sharing"
+    href="https://drive.google.com/file/d/1OwnIS2VnlQ1zDyYQucdBqFOxr9Uos--b/view?usp=sharing"
     target="_blank"
     rel="noopener noreferrer"
     className="inline-block px-6 py-3 text-white bg-purple-600 hover:bg-purple-700 rounded-lg shadow-lg transition duration-300"
