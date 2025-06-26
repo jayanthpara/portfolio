@@ -73,3 +73,17 @@
 .read-the-docs {
   color: #888;
 }
+
+
+@keyframes progressBar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-progress {
+  animation: progressBar 5s linear forwards;
+}

@@ -1,9 +1,14 @@
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+
+
+
 import React, { useState, useEffect, useRef} from 'react';
+import { useNavigate } from "react-router-dom";
 
 
+import profileImg from './assets/wall/img.png';
 
-
-import profileImg from './assets/profile.png';
 import wall1 from './assets/wall/1.jpg';
 import wall2 from './assets/wall/2.jpg';
 import wall3 from './assets/wall/3.jpg';
@@ -20,11 +25,76 @@ import cert2 from './assets/wall/c2.png';
 import cert3 from './assets/wall/c3.png';
 import cert4 from './assets/wall/c4.png';
 
+
+
+import giphy from './assets//wall/contact.gif';
+
 import { User, MapPin, Calendar, Briefcase, Code, Mail, Phone, MessageSquare, Menu, X, Award, Camera, ExternalLink } from 'lucide-react';
 import { Github, Linkedin, Instagram } from 'lucide-react';
 
 
+
+
 const Portfoli = () => {
+
+
+
+
+
+const navigate = useNavigate();
+
+
+
+
+
+
+
+
+
+
+const wallRef = useRef(null);
+const isDragging = useRef(false);
+const startX = useRef(0);
+const scrollLeft = useRef(0);
+
+
+const desktopSpeed = 0.8; // Must be >= 0.5 to be visible
+const mobileSpeed = 0.5;  // Slower for smaller screens
+
+  
+
+const [isMobile, setIsMobile] = useState(false);
+
+const isMobileDevice = () => {
+  return typeof window !== "undefined" && window.innerWidth <= 768;
+};
+
+
+useEffect(() => {
+  const scrollContainer = wallRef.current;
+  if (!scrollContainer) return;
+
+  let scrollSpeed = isMobile ? mobileSpeed : desktopSpeed;
+
+  const autoScroll = () => {
+    scrollContainer.scrollLeft += scrollSpeed;
+
+    // Reset scroll for infinite loop effect
+    if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+      scrollContainer.scrollLeft = 0;
+    }
+  };
+
+  const interval = setInterval(autoScroll, 24); // ~60FPS
+
+  return () => clearInterval(interval);
+}, [isMobile]); // Re-run if device type changes
+
+
+
+
+
+
   // Inside Portfolio component
 const skillsRef = useRef(null);
 const experienceRef = useRef(null);
@@ -52,7 +122,7 @@ const meRef = useRef(null);
       date: "2025",
       description: "Learned to build real-time data pipelines and stream processing systems using Apache Kafka",
       image: cert1,
-      skills: ["Python", "OOP", "Async Programming"],
+      skills: ["Java", "OOP", "Async Programming"],
       credentialId: "PY-ADV-2024-001"
     },
     {
@@ -62,7 +132,7 @@ const meRef = useRef(null);
       date: "2024",
       description: "Gained hands-on experience in data visualization, dashboards, and business analytics using Power BI",
       image: cert2,
-      skills: ["React", "JavaScript", "Hooks"],
+      skills: ["Power BI", "R Lang"],
       credentialId: "REACT-2024-002"
     },
     {
@@ -172,15 +242,14 @@ const meRef = useRef(null);
     }
   ];
 
-  // Timeline animation
-  useEffect(() => {
-    if (!isTimelinePaused) {
-      const interval = setInterval(() => {
-        setTimelineOffset(prev => (prev - 1) % (wallPhotos.length * 320));
-      }, 50);
-      return () => clearInterval(interval);
-    }
-  }, [isTimelinePaused, wallPhotos.length]);
+
+
+
+
+
+
+
+
 
   const handleInputChange = (e) => {
     setFormData({
@@ -189,25 +258,82 @@ const meRef = useRef(null);
     });
   };
 
+
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
   };
 
-  const handleViewCertifications = () => {
-    // This would navigate to a certifications page in a real app
-    console.log('Navigate to certifications page');
-  };
+
+
+const handleViewCertifications = () => {
+  navigate("/certificates");
+};
 
   const handleViewGallery = () => {
     // This would navigate to a gallery page in a real app
     console.log('Navigate to gallery page');
   };
 
+
+
+
+
+
+  
+
+
+const handleMouseDown = (e) => {
+  isDragging.current = true;
+  startX.current = e.pageX - wallRef.current.offsetLeft;
+  scrollLeft.current = wallRef.current.scrollLeft;
+};
+
+const handleMouseMove = (e) => {
+  if (!isDragging.current) return;
+  const x = e.pageX - wallRef.current.offsetLeft;
+  const walk = (x - startX.current) * 1.5; // scroll-fastness factor
+  wallRef.current.scrollLeft = scrollLeft.current - walk;
+};
+
+const handleMouseUp = () => {
+  isDragging.current = false;
+};
+
+
+
+
+
+
+
+
+
+
+
   return (
+    
+
+
+
+
+
+
+
+
+
+
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 text-white">
       {/* Hero Section */}
+
+
+
+
       <div className="relative min-h-screen flex flex-col lg:flex-row">
+
+        
         {/* Mobile Menu Button */}
         <div className="lg:hidden absolute top-6 right-6 z-50">
           <button
@@ -262,10 +388,18 @@ const meRef = useRef(null);
             </div>
           </div>
         </div>
+{/* Right Side Image */}
+<div className="hidden lg:flex items-center justify-center w-full lg:w-1/2 p-6">
+  <img
+    src={profileImg}
+    alt="Hero Visual"
+    className="max-w-full h-96 rounded-xl "
+  />
+</div>
 
         {/* Right Side - Navigation */}
-        <div className={`${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} lg:translate-x-0 fixed lg:relative top-0 right-0 w-full sm:w-80 lg:w-80 h-full bg-black bg-opacity-90 lg:bg-opacity-30 backdrop-blur-sm p-6 lg:p-8 flex flex-col transition-transform duration-300 ease-in-out z-40`}>
-          <div className="space-y-6 mt-16 lg:mt-0">
+       <div className={`${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} fixed top-0 right-0 w-full sm:w-80 lg:w-80 h-full bg-black bg-opacity-90 backdrop-blur-sm p-6 lg:p-8 flex flex-col transition-transform duration-300 ease-in-out z-40`}>
+   <div className="space-y-6 mt-16 lg:mt-0">
             <div className="flex items-center space-x-3 p-4 bg-purple-600 bg-opacity-50 rounded-lg">
               <User size={20} />
               <span>ME</span>
@@ -315,90 +449,91 @@ const meRef = useRef(null);
             <h2 className="text-3xl lg:text-5xl font-bold mb-4">ME</h2>
           </div>
           
-          <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-16 items-center space-y-8 lg:space-y-0">
-            <div className="flex flex-col items-center order-2 lg:order-2">
-              <div className="w-64 h-64 lg:w-80 lg:h-80 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full mb-6 lg:mb-8 flex items-center justify-center">
-                <div className="w-56 h-56 lg:w-72 lg:h-72 bg-gray-800 rounded-full flex items-center justify-center">
-                  
-                  <img
-  src={profileImg}
-  alt="Profile"
 
-  className="w-full h-full object-cover rounded-full"
-/>
 
-                </div>
-              </div>
-              
-              <div className="text-center">
-                
-                <h4 className="text-xl lg:text-2xl font-bold mb-4">My track record</h4>
-                <p className="text-gray-400 mb-6 text-sm lg:text-base px-4 lg:px-0">
-                  Just like the pilots having flight hours I
-                  too got some numbers of my work as
-                  working hours and also another
-                  number mentioned as productive hours
-                </p>
-                
-                <div className="grid grid-cols-2 gap-6 lg:gap-8">
-                  <div className="text-center">
-                    <div className="text-3xl lg:text-4xl font-bold text-blue-400">620+</div>
-                    <div className="text-gray-400 text-sm">Working hours</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl lg:text-4xl font-bold text-purple-400">420+</div>
-                    <div className="text-gray-400 text-sm">Productive hours</div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div className="order-1 lg:order-1">
-              <h3 className="text-2xl lg:text-4xl font-bold mb-4 lg:mb-6 text-center lg:text-left">Jayanth Para</h3>
-              <p className="text-gray-300 leading-relaxed mb-6 lg:mb-8 text-sm lg:text-base text-center lg:text-left px-4 lg:px-0">
-                I am a versatile developer and data science enthusiast with a
-                strong foundation in full-stack development, backend
-                systems, and modern web technologies. My expertise
-                centers around creating solutions that are both functional
-                and visually engaging. Passionate about transforming
-                concepts into reality, I bring a unique perspective to every
-                project. My goal is to leverage cutting-edge technology
-                that drive meaningful results.
-              </p>
-              
-              <div className="space-y-4 px-4 lg:px-0">
-                <div className="flex items-center space-x-4 p-3 lg:p-4 bg-blue-600 bg-opacity-20 rounded-lg">
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Code size={20} />
-                  </div>
-                  <div>
-                    <div className="font-medium text-sm lg:text-base">Websites delivered</div>
-                    <div className="text-xs lg:text-sm text-gray-400">7+ professional websites</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-4 p-3 lg:p-4 bg-green-600 bg-opacity-20 rounded-lg">
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MessageSquare size={20} />
-                  </div>
-                  <div>
-                    <div className="font-medium text-sm lg:text-base">Mobile apps</div>
-                    <div className="text-xs lg:text-sm text-gray-400">3+ mobile applications</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-4 p-3 lg:p-4 bg-orange-600 bg-opacity-20 rounded-lg">
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Briefcase size={20} />
-                  </div>
-                  <div>
-                    <div className="font-medium text-sm lg:text-base">Projects addressed</div>
-                    <div className="text-xs lg:text-sm text-gray-400">15+ successful projects</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+<div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-16 items-start lg:items-center space-y-8 lg:space-y-0">
+
+  {/* 👤 Image + Track Record — First on mobile, right on desktop */}
+  <div className="order-1 lg:order-2 flex flex-col items-center ">
+    
+        <img
+          src={profileImg}
+          alt="Profile"
+          className="w-80 h-80 object-cover mb-8"
+        />
+     
+
+    {/* 📊 My Track Record */}
+    <div className="text-center">
+      <h4 className="text-xl lg:text-2xl font-bold mb-4">My track record</h4>
+      <p className="text-gray-400 mb-6 text-sm lg:text-base px-4 lg:px-0">
+        Just like the pilots having flight hours I too got some numbers of my work as
+        working hours and also another number mentioned as productive hours
+      </p>
+      <div className="grid grid-cols-2 gap-6 lg:gap-8">
+        <div className="text-center">
+          <div className="text-3xl lg:text-4xl font-bold text-blue-400">620+</div>
+          <div className="text-gray-400 text-sm">Working hours</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl lg:text-4xl font-bold text-purple-400">420+</div>
+          <div className="text-gray-400 text-sm">Productive hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* 🧑‍💻 Jayanth Para Details — Second on mobile, left on desktop */}
+  <div className="order-2 lg:order-1">
+    <h3 className="text-2xl lg:text-4xl font-bold mb-4 lg:mb-6 text-center lg:text-left">Jayanth Para</h3>
+    <p className="text-gray-300 leading-relaxed mb-6 lg:mb-8 text-sm lg:text-base text-center lg:text-left px-4 lg:px-0">
+      I am a versatile developer and data science enthusiast with a strong
+      foundation in full-stack development, backend systems,
+      and modern web technologies. My expertise centers around creating
+      solutions that are both functional and visually engaging.
+      Passionate about transforming concepts into reality, I bring a
+      unique perspective to every project. My goal is to leverage
+      cutting-edge technology that drive meaningful results.
+    </p>
+
+    <div className="space-y-4 px-4 lg:px-0">
+      {/* Websites Delivered */}
+      <div className="flex items-center space-x-4 p-3 lg:p-4 bg-blue-600 bg-opacity-20 rounded-lg">
+        <div className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+          <Code size={20} />
+        </div>
+        <div>
+          <div className="font-medium text-sm lg:text-base">Websites delivered</div>
+          <div className="text-xs lg:text-sm text-gray-400">7+ professional websites</div>
+        </div>
+      </div>
+
+      {/* Mobile Apps */}
+      <div className="flex items-center space-x-4 p-3 lg:p-4 bg-green-600 bg-opacity-20 rounded-lg">
+        <div className="w-10 h-10 lg:w-12 lg:h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+          <MessageSquare size={20} />
+        </div>
+        <div>
+          <div className="font-medium text-sm lg:text-base">Mobile apps</div>
+          <div className="text-xs lg:text-sm text-gray-400">3+ mobile applications</div>
+        </div>
+      </div>
+
+      {/* Projects */}
+      <div className="flex items-center space-x-4 p-3 lg:p-4 bg-orange-600 bg-opacity-20 rounded-lg">
+        <div className="w-10 h-10 lg:w-12 lg:h-12 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
+          <Briefcase size={20} />
+        </div>
+        <div>
+          <div className="font-medium text-sm lg:text-base">Projects addressed</div>
+          <div className="text-xs lg:text-sm text-gray-400">15+ successful projects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
         </div>
       </section>
 
@@ -434,7 +569,7 @@ const meRef = useRef(null);
               <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0">
                 <div className="flex-1 lg:text-right lg:pr-8">
                   <h3 className="text-xl lg:text-2xl font-bold">Atharva DSC</h3>
-                  <p className="text-gray-400 text-sm lg:text-base">Lead Developer</p>
+                  <p className="text-gray-400 text-sm lg:text-base">Lead </p>
                 </div>
                 <div className="hidden lg:block w-4 h-4 bg-purple-500 rounded-full relative z-10"></div>
                 <div className="flex-1 lg:pl-8">
@@ -446,7 +581,7 @@ const meRef = useRef(null);
               <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0">
                 <div className="flex-1 lg:text-right lg:pr-8">
                   <h3 className="text-xl lg:text-2xl font-bold">Nirvaha</h3>
-                  <p className="text-gray-400 text-sm lg:text-base">Content Creator</p>
+                  <p className="text-gray-400 text-sm lg:text-base">Content reation</p>
                 </div>
                 <div className="hidden lg:block w-4 h-4 bg-green-500 rounded-full relative z-10"></div>
                 <div className="flex-1 lg:pl-8">
@@ -567,10 +702,14 @@ const meRef = useRef(null);
           <div className="lg:hidden">
             <div className="flex space-x-4 overflow-x-auto pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {certificates.map((cert) => (
-                <div
-                  key={cert.id}
-                  className="transform transition-transform duration-300 hover:scale-105 bg-gradient-to-br from-blue-900 to-purple-900 bg-opacity-50 rounded-xl p-6 cursor-pointer"
-  onMouseEnter={() => setHoveredCert(cert.id)}
+
+
+<div
+  key={cert.id}
+  className="flex flex-col justify-between h-[340px] w-[260px] min-w-[260px] transform transition-transform duration-300 hover:scale-105 bg-gradient-to-br from-blue-900 to-purple-900 bg-opacity-50 rounded-xl p-6 cursor-pointer"
+
+
+                  onMouseEnter={() => setHoveredCert(cert.id)}
                   onMouseLeave={() => setHoveredCert(null)}
                 >
                   <div className="w-full h-32 mb-4 rounded-lg overflow-hidden">
@@ -641,16 +780,26 @@ const meRef = useRef(null);
             </div>
           </div>
 
+
+
+
+
+
+<button
+  onClick={handleViewCertifications}
+  className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 flex items-center space-x-2 mx-auto"
+>
+  <span>View More</span>
+  <ExternalLink size={18} />
+</button>
+
+
+
+
+
+
           {/* View More Button */}
-          <div className="text-center mt-8">
-            <button
-              onClick={handleViewCertifications}
-              className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 flex items-center space-x-2 mx-auto"
-            >
-              <span>View More</span>
-              <ExternalLink size={18} />
-            </button>
-          </div>
+          
         </div>
       </section>
 
@@ -665,13 +814,23 @@ const meRef = useRef(null);
             onMouseEnter={() => setIsTimelinePaused(true)}
             onMouseLeave={() => setIsTimelinePaused(false)}
           >
-            <div 
-              className="flex space-x-4 transition-transform duration-100 ease-linear"
-              style={{ 
-                transform: `translateX(${timelineOffset}px)`,
-                width: `${wallPhotos.length * 320 * 2}px`
-              }}
-            >
+      <div
+
+  ref={wallRef}
+  className="scroll-hide flex space-x-4 overflow-x-scroll cursor-grab"
+  style={{ WebkitOverflowScrolling: 'touch' }}
+  onMouseDown={handleMouseDown}
+  onMouseMove={handleMouseMove}
+  onMouseUp={handleMouseUp}
+  onMouseLeave={handleMouseUp}
+>
+
+
+
+
+
+
+              
               {/* Duplicate the photos for seamless loop */}
               {[...wallPhotos, ...wallPhotos].map((photo, index) => (
                 <div
@@ -722,6 +881,8 @@ const meRef = useRef(null);
             </button>
           </div>
         </div>
+          {/* Custom CSS to hide scrollbar */}
+
       </section>
 
       {/* Contact Section */}
@@ -731,52 +892,70 @@ const meRef = useRef(null);
           
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
             <div>
-              <div className="space-y-4 lg:space-y-6">
-                <div>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Full name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full p-3 lg:p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none text-sm lg:text-base"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email address"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full p-3 lg:p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none text-sm lg:text-base"
-                  />
-                </div>
-                <div>
-                  <textarea
-                    name="message"
-                    placeholder="Your message"
-                    rows="4"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="w-full p-3 lg:p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none resize-none text-sm lg:text-base"
-                  ></textarea>
-                </div>
-                <button
-                  onClick={handleSubmit}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 lg:py-4 px-4 lg:px-6 rounded-lg transition-colors text-sm lg:text-base"
-                >
-                  Submit
-                </button>
-              </div>
+              <div>
+  <form
+    action="https://formspree.io/f/xblypvvq"
+    method="POST"
+    className="space-y-4 lg:space-y-6"
+  >
+    <div>
+      <input
+        type="text"
+        name="name"
+        placeholder="Full name"
+        required
+        className="w-full p-3 lg:p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none text-sm lg:text-base"
+      />
+    </div>
+
+    <div>
+      <input
+        type="email"
+        name="email"
+        placeholder="Email address"
+        required
+        className="w-full p-3 lg:p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none text-sm lg:text-base"
+      />
+    </div>
+
+    <div>
+      <textarea
+        name="message"
+        placeholder="Your message"
+        rows="4"
+        required
+        className="w-full p-3 lg:p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none resize-none text-sm lg:text-base"
+      ></textarea>
+    </div>
+
+    <button
+      type="submit"
+      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 lg:py-4 px-4 lg:px-6 rounded-lg transition-colors text-sm lg:text-base"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
             </div>
             
             <div className="flex items-center justify-center">
+              
               <div 
               className="w-64 h-64 lg:w-80 lg:h-80 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center">
-<a href="mailto:jayanthpara21@.com">
-  <Mail size={60} className="text-white hover:text-purple-400 transition-colors duration-300 cursor-pointer" />
+<a href="mailto:jayanthpara21@gmail.com">
+
 </a>
+
+<div 
+  className="w-64 h-64 lg:w-80 lg:h-80 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center overflow-hidden">
+  <img
+    src={giphy}
+    alt="Animated Mail GIF"
+    className="w-64 h-64 lg:w-80 lg:h-80 object-contain"
+  />
+</div>
+
 
               </div>
             </div>
@@ -820,11 +999,15 @@ const meRef = useRef(null);
     <div className="space-y-2 text-sm text-gray-400">
       <div className="flex justify-center items-center space-x-2">
         <Mail size={16} />
+        <a href="mailto:jayanthpara21@gmail.com">
         <span>jayanthpara21@gmail.com</span>
+        </a>
       </div>
       <div className="flex justify-center items-center space-x-2">
         <Phone size={16} />
+        <a href="tel:9346011959">
         <span>+91 93460 11959</span>
+        </a>
       </div>
     </div>
 
@@ -860,6 +1043,20 @@ const meRef = useRef(null);
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
+
+
+
+       .scroll-hide::-webkit-scrollbar {
+  display: none;
+}
+.scroll-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+ 
+
+
       `}</style>
     </div>
   );
