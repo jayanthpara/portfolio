@@ -202,7 +202,7 @@ const meRef = useRef(null);
     {
       id: 6,
       title: "T hub",
-      description: "Vsited T-hub meeting foudners and startup owners",
+      description: "Visited T-hub meeting foudners and startup owners",
       date: "October 2023",
       image: wall6,
       category: "Work"
