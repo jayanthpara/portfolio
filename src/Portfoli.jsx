@@ -581,7 +581,7 @@ const handleMouseUp = () => {
               <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0">
                 <div className="flex-1 lg:text-right lg:pr-8">
                   <h3 className="text-xl lg:text-2xl font-bold">Nirvaha</h3>
-                  <p className="text-gray-400 text-sm lg:text-base">Content reation</p>
+                  <p className="text-gray-400 text-sm lg:text-base">Content creation</p>
                 </div>
                 <div className="hidden lg:block w-4 h-4 bg-green-500 rounded-full relative z-10"></div>
                 <div className="flex-1 lg:pl-8">
