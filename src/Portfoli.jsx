@@ -624,68 +624,123 @@ const handleMouseUp = () => {
           
           <div className="lg:hidden">
             <div className="flex space-x-4 overflow-x-auto pb-4 px-6" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              <div className="bg-purple-900 bg-opacity-30 rounded-lg p-4 hover:transform hover:scale-105 transition-transform min-w-[280px] flex-shrink-0">
+          
+     <a
+  href="https://eventer-pj.vercel.app/"
+  target="_blank"
+  rel="noopener noreferrer"
+  
+>          
+              <div className="h-72 bg-purple-900 bg-opacity-30 rounded-lg p-4 hover:transform hover:scale-105 transition-transform min-w-[280px] flex-shrink-0">
+                <h3 className="text-lg font-bold mb-2">Event Page</h3>
+                <p className="w-64 text-gray-400 mb-4 text-sm">A webpage which enables to show all the event details and registration features</p>
+                <div className="w-64 h-32 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
+                  <img
+    src="https://i.ibb.co/s9xCPQ0g/Screenshot-2025-07-01-011826.png"
+    alt="Event Page"
+    className="object-cover w-full h-full"
+  />
+                </div>
+                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">Flutter</div>
+              </div>
+    </a>   
+    
+     <a
+  href="https://salesboard-pj.vercel.app/"
+  target="_blank"
+  rel="noopener noreferrer"
+  
+>       
+              <div className="h-72 bg-purple-900 bg-opacity-30 rounded-lg p-4 hover:transform hover:scale-105 transition-transform min-w-[280px] flex-shrink-0">
+                <h3 className="text-lg font-bold mb-2">Sales Dashboard</h3>
+                <p className="w-64 text-gray-400 mb-4 text-sm">A sales dashboard which gives comprehensive analysis on given data</p>
+                <div className="w-64 h-32 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
+                  <img
+    src="https://i.ibb.co/TqmLGK98/Screenshot-2025-07-01-011937.png"
+    alt="Event Page"
+    className="object-cover w-full h-full"
+  />
+                </div>
+                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">AI/ML</div>
+              </div>
+</a>
+    <div className="h-72 bg-purple-900 bg-opacity-30 rounded-lg p-4 hover:transform hover:scale-105 transition-transform min-w-[280px] flex-shrink-0">
                 <h3 className="text-lg font-bold mb-2">Spent analyzer</h3>
-                <p className="text-gray-400 mb-4 text-sm">A dashboard to visualize your expenditure and get comprehensive data and insights</p>
-                <div className="w-full h-32 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
-                  <Code size={30} className="text-gray-400" />
+                <p className="w-64 text-gray-400 mb-4 text-sm">A dashboard to visualize your expenditure and get data and insights</p>
+                <div className="w-64 h-32 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
+                  <img
+    src="https://i.ibb.co/Kgnk87c/Screenshot-2025-07-01-014150.png"
+    alt="Event Page"
+    className="object-cover w-full h-full"
+  />
                 </div>
                 <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">Flask</div>
                 <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">React</div>
               </div>
-              
-              <div className="bg-purple-900 bg-opacity-30 rounded-lg p-4 hover:transform hover:scale-105 transition-transform min-w-[280px] flex-shrink-0">
-                <h3 className="text-lg font-bold mb-2">Chess Modal</h3>
-                <p className="text-gray-400 mb-4 text-sm">A model for chess games that can predict the next move with comprehensive data analysis</p>
-                <div className="w-full h-32 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center">
-                    <span className="text-xl">♚</span>
-                  </div>
-                </div>
-                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">Flutter</div>
-              </div>
-              
-              <div className="bg-purple-900 bg-opacity-30 rounded-lg p-4 hover:transform hover:scale-105 transition-transform min-w-[280px] flex-shrink-0">
-                <h3 className="text-lg font-bold mb-2">Interviewer</h3>
-                <p className="text-gray-400 mb-4 text-sm">An AI-powered interview assistant that helps conduct technical interviews</p>
-                <div className="w-full h-32 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
-                  <User size={30} className="text-blue-400" />
-                </div>
-                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">AI/ML</div>
-              </div>
             </div>
           </div>
 
+
           <div className="hidden lg:block px-12 xl:px-20">
             <div className="grid md:grid-cols-3 gap-8">
+
+
+
+             
+              
+        <a
+  href="https://eventer-pj.vercel.app/"
+  target="_blank"
+  rel="noopener noreferrer"
+  
+>      
               <div className="bg-purple-900 bg-opacity-30 rounded-lg p-6 hover:transform hover:scale-105 transition-transform">
+                <h3 className="text-xl font-bold mb-2">Event page</h3>
+                <p className="text-gray-400 mb-4">A webpage for event landing page with all the details about event and registration</p>
+                <div className="w-full h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
+                  
+                   <img
+    src="https://i.ibb.co/s9xCPQ0g/Screenshot-2025-07-01-011826.png"
+    alt="Event Page"
+    className="object-cover w-full h-full"
+  />
+                  
+                </div>
+                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-sm inline-block">Python</div>
+              </div>
+      </a>   
+       <a
+  href="https://salesboard-pj.vercel.app/"
+  target="_blank"
+  rel="noopener noreferrer"
+  
+>  
+              <div className="bg-purple-900 bg-opacity-30 rounded-lg p-6 hover:transform hover:scale-105 transition-transform">
+                <h3 className="text-xl font-bold mb-2">Sales Dashboard</h3>
+                <p className="text-gray-400 mb-4">A sales dashboard which gives comprehensive analysis on given data</p>
+                <div className="w-full h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
+                  <img
+    src="https://i.ibb.co/TqmLGK98/Screenshot-2025-07-01-011937.png"
+    alt="Event Page"
+    className="object-cover w-full h-full"
+  />
+                </div>
+                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-sm inline-block">AI/ML</div>
+              </div>
+</a>
+<div className="bg-purple-900 bg-opacity-30 rounded-lg p-6 hover:transform hover:scale-105 transition-transform">
                 <h3 className="text-xl font-bold mb-2">Spent analyzer</h3>
                 <p className="text-gray-400 mb-4">A dashboard to visualize your expenditure and get comprehensive data and insights</p>
                 <div className="w-full h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
-                  <Code size={40} className="text-gray-400" />
+                  <img
+    src="https://i.ibb.co/Kgnk87c/Screenshot-2025-07-01-014150.png"
+    alt="Event Page"
+    className="object-cover w-full h-full"
+  />
                 </div>
                 <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-sm inline-block">React</div>
               </div>
               
-              <div className="bg-purple-900 bg-opacity-30 rounded-lg p-6 hover:transform hover:scale-105 transition-transform">
-                <h3 className="text-xl font-bold mb-2">Chess Modal</h3>
-                <p className="text-gray-400 mb-4">A model for chess games that can predict the next move with comprehensive data analysis</p>
-                <div className="w-full h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center">
-                    <span className="text-2xl">♚</span>
-                  </div>
-                </div>
-                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-sm inline-block">Python</div>
-              </div>
-              
-              <div className="bg-purple-900 bg-opacity-30 rounded-lg p-6 hover:transform hover:scale-105 transition-transform">
-                <h3 className="text-xl font-bold mb-2">Interviewer</h3>
-                <p className="text-gray-400 mb-4">An AI-powered interview assistant that helps conduct technical interviews</p>
-                <div className="w-full h-40 bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
-                  <User size={40} className="text-blue-400" />
-                </div>
-                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-sm inline-block">AI/ML</div>
-              </div>
             </div>
           </div>
         </div>
