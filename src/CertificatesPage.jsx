@@ -316,9 +316,10 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 0, scale: 0.98 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4 } },
 };
+
 
 const CertificatesPage = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -352,6 +353,12 @@ const CertificatesPage = () => {
     0
   );
 
+
+
+
+
+
+  
   return (
     <motion.div
       className="min-h-screen bg-slate-900 py-8 sm:py-16 px-4 sm:px-6 lg:px-20"

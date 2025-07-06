@@ -605,7 +605,7 @@ const handleMouseUp = () => {
           <h2 className="text-3xl lg:text-5xl font-bold text-center mb-12 lg:mb-16">Skills & Technologies</h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 lg:gap-4">
-            {['Python', 'MySQL', 'MongoDB', 'Kafka', 'Flask', 'Flutter','React','Java','Flask','Selenium','Product design','Figma','OpenCV','Github'].map((skill, index) => (
+            {['Python', 'Java', 'MySQL', 'MongoDB', 'Flask','React','Tailwind','Selenium','OpenCV','Nodejs','Nextjs','Git'].map((skill, index) => (
               <div key={index} className="bg-gray-800 bg-opacity-50 rounded-lg p-3 lg:p-4 text-center hover:bg-purple-600 hover:bg-opacity-30 transition-colors">
                 <span className="font-medium text-sm lg:text-base">{skill}</span>
               </div>
@@ -818,7 +818,7 @@ const handleMouseUp = () => {
                   <p className="text-sm text-gray-400 mb-2">{cert.issuer} • {cert.date}</p>
                   
                   {hoveredCert === cert.id && (
-                    <div className="mt-4 space-y-3 animate-fade-in">
+                    <div className="absolute inset-0 bg-black bg-opacity-65 rounded-xl p-4 flex flex-col justify-center space-y-2 animate-fade-in z-10">
                       <p className="text-sm text-gray-300">{cert.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {cert.skills.map((skill, index) => (
