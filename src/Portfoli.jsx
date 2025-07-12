@@ -926,7 +926,7 @@ const handleMouseUp = () => {
           </div>
 
           {/* View More Button */}
-          <div className="text-center mt-8 px-6 lg:px-12 xl:px-20">
+          {/* <div className="text-center mt-8 px-6 lg:px-12 xl:px-20">
             <button
               onClick={handleViewGallery}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 flex items-center space-x-2 mx-auto"
@@ -934,7 +934,7 @@ const handleMouseUp = () => {
               <span>View Gallery</span>
               <ExternalLink size={18} />
             </button>
-          </div>
+          </div> */}
         </div>
           {/* Custom CSS to hide scrollbar */}
 
