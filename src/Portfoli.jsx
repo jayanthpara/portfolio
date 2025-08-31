@@ -641,7 +641,7 @@ const handleMouseUp = () => {
     className="object-cover w-full h-full"
   />
                 </div>
-                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">Flutter</div>
+                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">React</div>
               </div>
     </a>   
     
@@ -674,8 +674,8 @@ const handleMouseUp = () => {
     className="object-cover w-full h-full"
   />
                 </div>
-                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">Flask</div>
-                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">React</div>
+                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">Python</div>
+                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">Falsk</div>
               </div>
             </div>
           </div>
@@ -706,7 +706,7 @@ const handleMouseUp = () => {
   />
                   
                 </div>
-                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-sm inline-block">Python</div>
+                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-sm inline-block">React</div>
               </div>
       </a>   
        <a
@@ -738,7 +738,7 @@ const handleMouseUp = () => {
     className="object-cover w-full h-full"
   />
                 </div>
-                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-sm inline-block">React</div>
+                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-sm inline-block">Flask</div>
               </div>
               
             </div>
