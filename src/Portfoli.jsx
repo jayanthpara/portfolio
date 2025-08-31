@@ -664,6 +664,12 @@ const handleMouseUp = () => {
                 <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">AI/ML</div>
               </div>
 </a>
+              <a
+  href="https://github.com/jayanthpara/transaction_tracker"
+  target="_blank"
+  rel="noopener noreferrer"
+  
+>
     <div className="h-72 bg-purple-900 bg-opacity-30 rounded-lg p-4 hover:transform hover:scale-105 transition-transform min-w-[280px] flex-shrink-0">
                 <h3 className="text-lg font-bold mb-2">Spent analyzer</h3>
                 <p className="w-64 text-gray-400 mb-4 text-sm">A dashboard to visualize your expenditure and get data and insights</p>
@@ -680,7 +686,7 @@ const handleMouseUp = () => {
             </div>
           </div>
 
-
+</a>
           <div className="hidden lg:block px-12 xl:px-20">
             <div className="grid md:grid-cols-3 gap-8">
 
