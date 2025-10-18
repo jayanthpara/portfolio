@@ -375,6 +375,18 @@ const CertificatesPage = () => {
         </p>
       </motion.div>
 
+
+         {/* 🔙 Back Button (same as Gallery page) */}
+          <button
+            onClick={() => window.history.back()}
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 
+                       text-white font-semibold py-2 md:py-3 px-6 md:px-8 rounded-full 
+                       transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 
+                       text-sm md:text-base"
+          >
+            Back
+          </button>
+
       {/* Filters */}
       <motion.div className="mb-6 sm:mb-8" variants={itemVariants}>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

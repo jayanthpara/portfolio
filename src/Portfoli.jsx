@@ -273,10 +273,14 @@ const handleViewCertifications = () => {
   navigate("/certificates");
 };
 
-  const handleViewGallery = () => {
-    // This would navigate to a gallery page in a real app
-    console.log('Navigate to gallery page');
-  };
+const handleViewGallery = () => {
+  navigate("/gallery");
+};
+
+  // const handleViewGallery = () => {
+  //   // This would navigate to a gallery page in a real app
+  //   console.log('Navigate to gallery page');
+  // };
 
 
 
@@ -366,7 +370,7 @@ const handleMouseUp = () => {
             </div>
 <div className="mt-6 mb-10 flex justify-center lg:justify-start">
   <a
-    href="https://drive.google.com/file/d/1-fz1Rsl0BKTSK1wtDjXDRJFaO7vxtGTg/view?usp=sharing"
+    href="https://drive.google.com/file/d/1syExCZnqa9B1Blt2rnd2l8JnbX_DWRvh/view?usp=sharing"
     target="_blank"
     rel="noopener noreferrer"
     className="inline-block px-6 py-3 text-white bg-purple-600 hover:bg-purple-700 rounded-lg shadow-lg transition duration-300"
@@ -641,7 +645,7 @@ const handleMouseUp = () => {
     className="object-cover w-full h-full"
   />
                 </div>
-                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">Flutter</div>
+                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-xs inline-block">Next js</div>
               </div>
     </a>   
     
@@ -706,7 +710,7 @@ const handleMouseUp = () => {
   />
                   
                 </div>
-                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-sm inline-block">Python</div>
+                <div className="bg-black bg-opacity-30 rounded px-3 py-1 text-sm inline-block">Next js</div>
               </div>
       </a>   
        <a
@@ -922,11 +926,16 @@ const handleMouseUp = () => {
                   </div>
                 </div>
               ))}
+
+              
             </div>
           </div>
 
+
+          
+
           {/* View More Button */}
-          {/* <div className="text-center mt-8 px-6 lg:px-12 xl:px-20">
+          { <div className="text-center mt-8 px-6 lg:px-12 xl:px-20">
             <button
               onClick={handleViewGallery}
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 flex items-center space-x-2 mx-auto"
@@ -934,9 +943,11 @@ const handleMouseUp = () => {
               <span>View Gallery</span>
               <ExternalLink size={18} />
             </button>
-          </div> */}
+          </div> }
         </div>
           {/* Custom CSS to hide scrollbar */}
+
+          
 
       </section>
 
